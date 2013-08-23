@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Js-logger-debugger : JS Code debugger / logger with various options" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Js-logger-debugger</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/joshua-arvin-lat/js-logger-debugger">View on GitHub</a>
+
+          <h1 id="project_title">Js-logger-debugger</h1>
+          <h2 id="project_tagline">JS Code debugger / logger with various options</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/joshua-arvin-lat/js-logger-debugger/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/joshua-arvin-lat/js-logger-debugger/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="js-logger--debugger" class="anchor" href="#js-logger--debugger"><span class="octicon octicon-link"></span></a>JS Logger / Debugger</h1>
+
+<ul>
+<li>JS code logger / debugger</li>
+<li>Allows you to add breakpoints when debugging errors</li>
+<li>Log mode is stored in local storage / cookies</li>
+<li>Allows you to turn on logging / debugging and then refresh the page to debug production code issues</li>
+<li>Requires jquery.local-storage.js</li>
+<li>For cross-browser compatibility, include cross-browser-js-fixes.js to prevent console.log issues in IE</li>
+</ul><h2>
+<a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Basic Usage</h2>
+
+<div class="highlight"><pre><span class="c1"># turn on logging and blocking</span>
+<span class="nx">JLD</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">JLD</span><span class="p">.</span><span class="nx">BLOCK_AND_LOG</span><span class="p">)</span>
+
+<span class="c1"># equivalent to console.log('log test')</span>
+<span class="nx">JLD</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">'log test'</span><span class="p">)</span>
+
+<span class="c1"># equivalent to alert('block test')</span>
+<span class="nx">JLD</span><span class="p">.</span><span class="nx">block</span><span class="p">(</span><span class="s">'block test'</span><span class="p">)</span>
+
+<span class="c1"># equivalent to alert and console.log</span>
+<span class="nx">JLD</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s">'block and log test'</span><span class="p">)</span>
+</pre></div>
+
+<h2>
+<a name="log-options" class="anchor" href="#log-options"><span class="octicon octicon-link"></span></a>Log Options</h2>
+
+<ul>
+<li>BLOCK_AND_LOG</li>
+<li>BLOCK_ONLY</li>
+<li>LOG_ONLY</li>
+<li>OFF (default)</li>
+</ul><h2>
+<a name="advanced-usage" class="anchor" href="#advanced-usage"><span class="octicon octicon-link"></span></a>Advanced Usage</h2>
+
+<div class="highlight"><pre>
+<span class="c1"># turn on logging and blocking</span>
+<span class="nx">JLD</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">JLD</span><span class="p">.</span><span class="nx">BLOCK_AND_LOG</span><span class="p">)</span>
+
+<span class="nv">a = </span><span class="k">new</span> <span class="nx">JLD</span><span class="p">(</span><span class="s">'Label 1'</span><span class="p">)</span>
+<span class="nv">b = </span><span class="k">new</span> <span class="nx">JLD</span><span class="p">(</span><span class="s">'Label 2'</span><span class="p">)</span>
+
+<span class="c1"># equivalent to console.log('Label 1: message 001')</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">'message 001'</span><span class="p">)</span>
+
+<span class="c1"># equivalent to alert('Label 1: message 002')</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">block</span><span class="p">(</span><span class="s">'message 002'</span><span class="p">)</span>
+
+<span class="c1"># equivalent to console.log('Label 2: message 003') and alert('Label 2: message 003')</span>
+<span class="nx">b</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s">'message 003'</span><span class="p">)</span>
+
+<span class="c1"># turn off all logging</span>
+<span class="nx">JLD</span><span class="p">.</span><span class="nx">off</span><span class="p">()</span>
+
+<span class="nx">JLD</span><span class="p">.</span><span class="nx">isOn</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="kc">false</span>
+</pre></div>
+
+<h2>
+<a name="debugging" class="anchor" href="#debugging"><span class="octicon octicon-link"></span></a>Debugging</h2>
+
+<p>Example source code</p>
+
+<div class="highlight"><pre><span class="nv">a = </span><span class="k">new</span> <span class="nx">JLD</span><span class="p">(</span><span class="s">'Value'</span><span class="p">)</span>
+
+<span class="c1"># some js code here ...</span>
+
+<span class="c1"># debug value of x when debugging is on</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+</pre></div>
+
+<p>Open javascript console and then run</p>
+
+<div class="highlight"><pre><span class="nx">JLD</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">JLD</span><span class="p">.</span><span class="nx">BLOCK_AND_LOG</span><span class="p">)</span>
+</pre></div>
+
+<p>Refresh the page and you'll see an alert message. Turn it off once you're done debugging.</p>
+
+<div class="highlight"><pre><span class="nx">JLD</span><span class="p">.</span><span class="nx">off</span><span class="p">()</span>
+</pre></div>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'js/cross-browser-js-fixes.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'js/jquery.min.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'js/jquery.local-storage.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'text/javascript'</span> <span class="na">src=</span><span class="s">'js/js-logger-debugger.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<h2>
+<a name="acknowledgements" class="anchor" href="#acknowledgements"><span class="octicon octicon-link"></span></a>Acknowledgements</h2>
+
+<p>© 2013, Joshua Arvin Lat. Released under the <a href="LICENSE">MIT License</a>.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Js-logger-debugger maintained by <a href="https://github.com/joshua-arvin-lat">joshua-arvin-lat</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
