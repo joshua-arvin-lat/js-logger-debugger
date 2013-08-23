@@ -6,9 +6,34 @@ JS Logger / Debugger
 - Log mode is stored in local storage / cookies
 - Allows you to turn on logging / debugging and then refresh the page to debug production code issues
 - Requires jquery.local-storage.js
+- For cross-browser compatibility, include cross-browser-js-fixes.js to prevent console.log issues in IE
 
 Basic Usage
 -----------
+~~~ coffee
+# turn on logging and blocking
+JLD.on(JLD.BLOCK_AND_LOG)
+
+# equivalent to console.log('log test')
+JLD.log('log test')
+
+# equivalent to alert('block test')
+JLD.block('block test')
+
+# equivalent to alert and console.log
+JLD.debug('block and log test')
+~~~
+
+Log Options
+-----------
+
+- BLOCK_AND_LOG
+- BLOCK_ONLY
+- LOG_ONLY
+- OFF (default)
+
+Advanced Usage
+--------------
 ~~~ coffee
 
 # turn on logging and blocking
@@ -32,14 +57,6 @@ JLD.off()
 JLD.isOn()
 > false
 ~~~
-
-Log Options
------------
-
-- BLOCK_AND_LOG
-- BLOCK_ONLY
-- LOG_ONLY
-- OFF (default)
 
 Debugging
 ---------
@@ -65,4 +82,14 @@ Refresh the page and you'll see an alert message. Turn it off once you're done d
 
 ~~~ js
 JLD.off()
+~~~
+
+Installation
+------------
+
+~~~ html
+<script type='text/javascript' src='js/cross-browser-js-fixes.js'></script>
+<script type='text/javascript' src='js/jquery.min.js'></script>
+<script type='text/javascript' src='js/jquery.local-storage.js'></script>
+<script type='text/javascript' src='js/js-logger-debugger.js'></script>
 ~~~
