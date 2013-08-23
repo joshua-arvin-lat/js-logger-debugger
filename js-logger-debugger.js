@@ -37,6 +37,23 @@ JLD = (function() {
     return mode === JLD.BLOCK_ONLY || mode === JLD.BLOCK_AND_LOG;
   };
 
+  JLD.log = function(message) {
+    if (JLD.allowLog()) {
+      return console.log("" + message);
+    }
+  };
+
+  JLD.block = function(message) {
+    if (JLD.allowBlock()) {
+      return alert("" + message);
+    }
+  };
+
+  JLD.debug = function(message) {
+    JLD.log(message);
+    return JLD.block(message);
+  };
+
   function JLD(label) {
     this.label = label != null ? label : 'Default Log';
     this.debug = __bind(this.debug, this);

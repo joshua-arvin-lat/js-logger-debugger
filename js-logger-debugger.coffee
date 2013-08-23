@@ -25,6 +25,16 @@ class JLD
 
     mode is @BLOCK_ONLY or mode is @BLOCK_AND_LOG
 
+  @log: (message) =>
+    console.log("#{message}") if @allowLog()
+
+  @block: (message) =>
+    alert("#{message}") if @allowBlock()
+
+  @debug: (message) =>
+    @log(message)
+    @block(message)
+
   constructor: (@label = 'Default Log') ->
 
   log: (message) =>
