@@ -93,3 +93,8 @@ Installation
 <script type='text/javascript' src='js/jquery.local-storage.js'></script>
 <script type='text/javascript' src='js/js-logger-debugger.js'></script>
 ~~~
+
+Acknowledgements
+----------------
+
+© 2013, Joshua Arvin Lat. Released under the [MIT License](LICENSE).
